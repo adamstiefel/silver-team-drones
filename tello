@@ -1,0 +1,23 @@
+import cv2
+from djitellopy import Tello
+import fakesleep as sleep
+x = 0
+drone = Tello()
+drone.connect()
+
+print(drone.get_battery())
+drone.streamoff()
+drone.streamon()
+
+
+while True:
+    print('lol')
+    if x == 0:
+        drone.takeoff()
+        sleep.sleep(2)
+        drone.get_acceleration_x()
+        x == 1
+    frame_read = drone.get_frame_read()
+    orgframe = frame_read.frame
+    img = cv2.resize(orgframe, (300,300))
+    cv2.imshow("Drone", img)
