@@ -1,0 +1,16 @@
+from djitellopy import Tello
+import fakesleep as sleep
+
+tello = Tello()
+
+tello.connect()
+
+print(tello.get_battery())
+
+tello.takeoff()
+
+tello.move_up(15)
+
+tello.move_forward(120)
+
+tello.land()
