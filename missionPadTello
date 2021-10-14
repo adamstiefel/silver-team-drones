@@ -1,0 +1,20 @@
+from djitellopy import Tello
+import fakesleep as sleep
+
+tello = Tello()
+
+tello.connect()
+
+print(tello.get_battery())
+
+
+tello.enable_mission_pads()
+
+tello.set_mission_pad_detection_direction(2)
+
+tello.takeoff()
+
+pad = tello.get_mission_pad_id()
+
+while pad != 1:
+    tello.move_forward(30)
